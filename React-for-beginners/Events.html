@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script>
+    const root = document.getElementById("root");
+    // HTML 태그  id/class,[프로퍼티[속성]]   value
+    const boxh3 = React.createElement("h3", {
+        onMouseUp: () => console.log("mouse Enter !"),
+
+    }, 
+    "Hello World!");
+    const boxbtn = React.createElement(
+      "button",
+      {
+        onClick: () => console.log("clicked!"),
+        style: {
+            backgroundColor: "royalblue",
+            padding: "15px",
+        }
+      },
+      "Click me‼‼"
+    );
+    const container = React.createElement("div", null, [boxh3, boxbtn]);
+    ReactDOM.render(container, root); //사용자에게 보여준다[ 웹 브라우저에 그려주는 함수]
+  </script>
+</html>
