@@ -1,6 +1,16 @@
 .App {
   text-align: center;
 }
+
+div {
+  box-sizing: border-box;
+
+}
+.list {
+  padding-left: 20px;
+  text-align: left;
+  border-bottom: 1px solid gray;
+}
 /* className으로 작성 할 것 */
 .black-nav {
   display: flex;
