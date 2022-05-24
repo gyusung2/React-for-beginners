@@ -1,7 +1,14 @@
 .App {
   text-align: center;
 }
-
+/* className으로 작성 할 것 */
+.black-nav {
+  display: flex;
+  background-color: black;
+  width: 100%;
+  color: wheat;
+  padding: 20px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
