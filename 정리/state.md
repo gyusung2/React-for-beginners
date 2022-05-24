@@ -7,6 +7,9 @@ let [name, age] = ['Kim', 20]
 
 ### 변수 말고 state에 데이터 저장해서 쓰는 이유
 ```
+ex) let [따봉 , 따봉변경] = useState(0);
+        (변수)   (함수)
+
 state는 변수 대신 쓰는 데이터 저장공간이다.
 
 state는 변동사항이 생기면 state쓰는 html도 자동으로 재렌더링
