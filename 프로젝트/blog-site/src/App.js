@@ -1,4 +1,4 @@
-/*eslint-disable*/
+/*eslint-disable*/ /*Lint 끄는*/
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
@@ -29,6 +29,14 @@ function App() {
        <p>5월 24일 발행</p>
 
      </div>
+
+      <Modal>
+
+      </Modal>
+      <ox>
+
+      </ox>
+
       <button onClick={()=>{
         let copy =[...글제목];
         copy.sort();
@@ -37,7 +45,7 @@ function App() {
 
 
       <button onClick={ ()=>{ 
-        let copy = [...글제목];
+        let copy = [...글제목];  /*[...글제목]*/
         copy[0] = '미세노 센세';
         글제목변경(copy)
       } }> 수정버튼 </button>
@@ -46,4 +54,30 @@ function App() {
   );
 }
 
+
+
+// 컴포넌트
+// 1. 반복적인 html 축약 2.큰 페이지 3. 자주 변경
+function Modal() {
+  return(
+    <>
+        <div className='modal'>
+        <h4>제목</h4>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div>
+      </>
+  )
+}
+
+function Box() {
+  return(
+    <>
+    <div className='box'>
+      <h4>제목</h4>
+      <p>시간</p>
+    </div>
+    </>
+  )
+}
 export default App;
