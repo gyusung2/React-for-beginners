@@ -7,16 +7,18 @@ function App() {
   let post = '대전 맛집'
   let [logo , setLogo] = useState('음식Blog');
   let [글제목, 글제목변경] = useState(['탄방동 음식 추천','선화동 음식 추천','월평동 음식 추천']);
-  let [따봉 , 따봉변경] = useState(0);
+  let [따봉 , 따봉변경] = useState([0 , 0 , 0]);
   //          state 변경 함수
   let [modal, setmodal] = useState(false);
+
+  
 
   return (
     <div className="App">
      <div className='black-nav'>
        <h4>{logo}</h4>
      </div>
-     <div className='list'>
+     {/* <div className='list'>
        <h4>{글제목[0]}<span onClick={()=>{ 따봉변경(따봉+1)}}>👍</span>{따봉}</h4>
        <p>5월 24일 발행</p>
 
@@ -30,7 +32,24 @@ function App() {
        <h4 onClick={()=>{setmodal(!modal)}} >{글제목[2]}<span>👍</span></h4>
        <p>5월 24일 발행</p>
 
+     </div> */}
+
+     {
+       글제목.map(function(a ,i){
+         return  ( <div className='list'>
+       <h4 onClick={()=>{setmodal(!modal)}}>{글제목[i]} <span onClick={()=>{ 
+      let copy = [...따봉];
+      copy[i] = copy[i] + 1;
+      따봉변경(copy)  
+   }}>👍</span> {따봉[i]} 
+</h4> 
+       <p>5월 24일 발행</p>
+
      </div>
+  
+         )
+       })
+     }
 
      {
        modal == true ? <Modal/> : null 
