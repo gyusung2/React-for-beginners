@@ -9,6 +9,8 @@ function App() {
   let [글제목, 글제목변경] = useState(['탄방동 음식 추천','선화동 음식 추천','월평동 음식 추천']);
   let [따봉 , 따봉변경] = useState(0);
   //          state 변경 함수
+  let [modal, setmodal] = useState(false);
+
   return (
     <div className="App">
      <div className='black-nav'>
@@ -25,17 +27,16 @@ function App() {
 
      </div>
      <div className='list'>
-       <h4>{글제목[2]}<span>👍</span></h4>
+       <h4 onClick={()=>{setmodal(!modal)}} >{글제목[2]}<span>👍</span></h4>
        <p>5월 24일 발행</p>
 
      </div>
 
-      <Modal>
-
-      </Modal>
-      <ox>
-
-      </ox>
+     {
+       modal == true ? <Modal/> : null 
+      //  조건식 ? 참 : 거짓
+     }
+      
 
       <button onClick={()=>{
         let copy =[...글제목];
@@ -54,10 +55,6 @@ function App() {
   );
 }
 
-
-
-// 컴포넌트
-// 1. 반복적인 html 축약 2.큰 페이지 3. 자주 변경
 function Modal() {
   return(
     <>
@@ -70,14 +67,5 @@ function Modal() {
   )
 }
 
-function Box() {
-  return(
-    <>
-    <div className='box'>
-      <h4>제목</h4>
-      <p>시간</p>
-    </div>
-    </>
-  )
-}
+
 export default App;
