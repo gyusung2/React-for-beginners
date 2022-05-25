@@ -1,4 +1,5 @@
 /*eslint-disable*/ /*Lint 끄는*/
+//  강의 :중요한 데이터는 변수말고 state에 담습니다
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
@@ -11,7 +12,6 @@ function App() {
   //          state 변경 함수
   let [modal, setmodal] = useState(false);
 
-  
 
   return (
     <div className="App">
