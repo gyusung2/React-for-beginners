@@ -32,15 +32,40 @@ function App() {
       <p>2월 17일 발행</p>
     </div>
     <div className='list'>
-      <h4>{글제목[1]} <span>👍</span> {따봉} </h4>
+      <h4>{글제목[1]} <span onClick={()=>{좋아요(따봉+=1)}}>👍</span> {따봉} </h4>
       <p>2월 17일 발행</p>
     </div>
     <div className='list'>
       <h4>{글제목[2]} <span>👍</span>  {따봉} </h4>
       <p>2월 17일 발행</p>
     </div>
+
+    <Modal></Modal>
+    <Box></Box>
+
     </div>
   );
+}
+
+
+function Modal() {
+  return (
+    <div className="modal">
+    <h4>제목</h4>
+    <p>날짜</p>
+    <p>상세내용</p>
+    </div>
+  )
+}
+
+function Box() {
+  return (
+    <div className=' modal Box'>
+      <h4>제목</h4>
+      <p>날짜</p>
+    <p>상세내용</p>
+    </div>
+  )
 }
 
 export default App;
