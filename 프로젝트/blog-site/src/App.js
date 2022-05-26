@@ -21,17 +21,14 @@ function App() {
      {/* <div className='list'>
        <h4>{글제목[0]}<span onClick={()=>{ 따봉변경(따봉+1)}}>👍</span>{따봉}</h4>
        <p>5월 24일 발행</p>
-
      </div>
      <div className='list'>
        <h4>{글제목[1]}<span>👍</span></h4>
        <p>5월 24일 발행</p>
-
      </div>
      <div className='list'>
        <h4 onClick={()=>{setmodal(!modal)}} >{글제목[2]}<span>👍</span></h4>
        <p>5월 24일 발행</p>
-
      </div> */}
   {/* a : array 안에 있던 데이터 */}
   {/* i : 반복문이 돌 때 마다 0부터 1씩 증가하는 함수*/}
@@ -55,7 +52,7 @@ function App() {
      
      {/* 삼항 연산자 */}
         {
-          modal == true ? <Modal/> : null
+          modal == true ? <Modal  글제목변경={글제목변경} 글제목 = {글제목}/> : null
         }
       
 
@@ -80,9 +77,15 @@ function Modal(props) {
   return(
    
         <div className='modal'>
-        <h4>제목</h4>
+        <h4>{props.글제목[0]}</h4>
         <p>날짜</p>
         <p>상세내용</p>
+        {/* <button onClick={()=>{props.글제목변경(['탄방동 음식 추천','선화동 음식 추천','월평동 음식 추천'])}}>글 수정</button> */}
+        <button onClick={()=>{props.글제목변경(['탄방동 음식 추천','선화동 음식 추천','월평동 음식 추천']);
+          let copy =[...글제목];
+        copy[0]= "탄방동 버기즈";
+          글제목변경(copy)
+        }}> 수정버튼 </button>
       </div>
      
   )
