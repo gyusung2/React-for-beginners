@@ -33,16 +33,18 @@ function App() {
        <p>5월 24일 발행</p>
 
      </div> */}
+  {/* a : array 안에 있던 데이터 */}
+  {/* i : 반복문이 돌 때 마다 0부터 1씩 증가하는 함수*/}
 
      {
-       글제목.map(function(a ,i){
-         return  ( <div className='list'>
-       <h4 onClick={()=>{setmodal(!modal)}}>{글제목[i]} <span onClick={()=>{ 
-      let copy = [...따봉];
-      copy[i] = copy[i] + 1;
-      따봉변경(copy)  
-   }}>👍</span> {따봉[i]} 
-</h4> 
+          글제목.map(function(a ,i){
+            return  ( <div className='list'>
+          <h4 onClick={()=>{setmodal(!modal)}}>{글제목[i]} <span onClick={()=>{ 
+          let copy = [...따봉];
+          copy[i] = copy[i] + 1;
+          따봉변경(copy)  
+          }}>👍</span> {따봉[i]} 
+          </h4> 
        <p>5월 24일 발행</p>
 
      </div>
@@ -50,11 +52,11 @@ function App() {
          )
        })
      }
-
-     {
-       modal == true ? <Modal/> : null 
-      //  조건식 ? 참 : 거짓
-     }
+     
+     {/* 삼항 연산자 */}
+        {
+          modal == true ? <Modal/> : null
+        }
       
 
       <button onClick={()=>{
@@ -74,15 +76,15 @@ function App() {
   );
 }
 
-function Modal() {
+function Modal(props) {
   return(
-    <>
+   
         <div className='modal'>
         <h4>제목</h4>
         <p>날짜</p>
         <p>상세내용</p>
       </div>
-      </>
+     
   )
 }
 
