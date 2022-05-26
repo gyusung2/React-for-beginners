@@ -11,6 +11,9 @@ function App() {
   let [따봉 , 따봉변경] = useState([0 , 0 , 0]);
   //          state 변경 함수
   let [modal, setmodal] = useState(false);
+  let [title, setTitle] = useState(0);
+
+  
 
 
   return (
@@ -52,7 +55,7 @@ function App() {
      
      {/* 삼항 연산자 */}
         {
-          modal == true ? <Modal  글제목변경={글제목변경} 글제목 = {글제목}/> : null
+          modal == true ? <Modal  title = {title} 글제목변경={글제목변경} 글제목 = {글제목}/> : null
         }
       
 
@@ -77,15 +80,10 @@ function Modal(props) {
   return(
    
         <div className='modal'>
-        <h4>{props.글제목[0]}</h4>
+        <h4>{props.글제목[props.title]}</h4>
         <p>날짜</p>
         <p>상세내용</p>
-        {/* <button onClick={()=>{props.글제목변경(['탄방동 음식 추천','선화동 음식 추천','월평동 음식 추천'])}}>글 수정</button> */}
-        <button onClick={()=>{props.글제목변경(['탄방동 음식 추천','선화동 음식 추천','월평동 음식 추천']);
-          let copy =[...글제목];
-        copy[0]= "탄방동 버기즈";
-          글제목변경(copy)
-        }}> 수정버튼 </button>
+        <button>글 수정</button>
       </div>
      
   )
