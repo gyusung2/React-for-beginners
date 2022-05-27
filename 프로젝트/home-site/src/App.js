@@ -8,11 +8,13 @@ function App() {
   let post = '월평 우동 맛집'; 
   let [글제목, 글제목변경] = useState(['월평동 맛집 추천', '탄방동 맛집 추천', '둔산동 맛집 추천']);
   let [따봉 , 좋아요] = useState(0);
+  let [modal , setModal] = useState(false);
+  let [title , setTitle] = useState(false);
   
   return (
     <div className="App">
     <div className="black-nav">
-      <div>블로그</div>
+      <div onClick={() => {setTitle(!title)}}>블로그</div>
     </div>
     <div className='list'>
 
@@ -36,12 +38,20 @@ function App() {
       <p>2월 17일 발행</p>
     </div>
     <div className='list'>
-      <h4>{글제목[2]} <span>👍</span>  {따봉} </h4>
+      <h4 onClick={()=>{setModal(!modal)}}>{글제목[2]} <span>👍</span>  {따봉} </h4>
       <p>2월 17일 발행</p>
     </div>
 
-    <Modal></Modal>
-    <Box></Box>
+    {
+      // 조건식  ? 참 : 거짓
+      modal == true ? <Modal></Modal> : null
+
+    }
+
+    {
+      title == true ? <Title></Title> : null
+    }
+    
 
     </div>
   );
@@ -57,15 +67,14 @@ function Modal() {
     </div>
   )
 }
-
-function Box() {
-  return (
-    <div className=' modal Box'>
-      <h4>제목</h4>
-      <p>날짜</p>
-    <p>상세내용</p>
+function Title() {
+  return(
+    <div className='title'>
+      <h4>hello</h4>
     </div>
   )
 }
+
+
 
 export default App;
