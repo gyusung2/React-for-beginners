@@ -10,7 +10,7 @@ function App() {
   let [따봉 , 좋아요] = useState([0 , 0 , 0]);
   let [modal , setModal] = useState(false);
   let [title, setTitle] = useState(0);
-  let [입력값, 입값변경] = useState('');
+  let [입력값, 입력값변경] = useState('');
 
   
   return (
