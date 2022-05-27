@@ -10,6 +10,7 @@ function App() {
   let [따봉 , 좋아요] = useState([0 , 0 , 0]);
   let [modal , setModal] = useState(false);
   let [title, setTitle] = useState(0);
+  let [입력값, 입값변경] = useState('');
 
   
   return (
@@ -50,7 +51,7 @@ function App() {
       글제목.map(function(a , i){
         return (
           <div className = "list" key={i}>
-            <h4 onClick={()=>{setModal(!modal); setTitle(i)}}>{글제목[i]}<span onClick={()=>{
+            <h4 onClick={()=>{setModal(!modal); setTitle(i)}}>{글제목[i]}<span onClick={(e)=>{e.stopPropagation()
               let copy = [...따봉];
               copy[i] = copy[i] + 1;
               좋아요(copy)}
@@ -61,7 +62,13 @@ function App() {
       })
       
     }
-    
+    <div>
+    <input onChange={(e)=>{ 입력값변경(e.target.value) }} /><button onClick={(e)=>{
+        let copy = [...글제목];
+        copy.unshift(입력값);
+        글제목변경(copy)
+      }}>추가</button>
+    </div>
     
     {
       // 조건식  ? 참 : 거짓
