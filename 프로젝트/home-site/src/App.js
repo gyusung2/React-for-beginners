@@ -11,8 +11,19 @@ function App() {
   let [modal , setModal] = useState(false);
   let [title, setTitle] = useState(0);
   let [입력값, 입력값변경] = useState('');
+  const [시간 , 시간출력] = useState('00:00:00');
 
-  
+  const time =() => {
+    const date = new Date();
+    const hours =String(date.getHours()).padStart(2,"0");
+    const min =String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    시간출력(`${hours}:${min}:${seconds}`)
+  }
+  const startTimer = () => {
+    setInterval(time , 1000)
+  }
+  startTimer()
   return (
     <div className="App">
     <div className="black-nav">
@@ -57,6 +68,15 @@ function App() {
               좋아요(copy)}
             }>👍</span> {따봉[i]}</h4>
             <p>5월 27일 발행</p>
+            <button onClick={(e)=>{
+              let copy = [...글제목];
+              copy.splice(i , 1);
+              글제목변경(copy)
+              copy[i] = copy[i] + 1;
+              좋아요(copy)
+            }}>삭제</button>
+
+            <p>{시간}</p>
           </div>
         )
       })
@@ -66,7 +86,8 @@ function App() {
     <input onChange={(e)=>{ 입력값변경(e.target.value) }} /><button onClick={(e)=>{
         let copy = [...글제목];
         copy.unshift(입력값);
-        글제목변경(copy)
+        글제목변경(copy) 
+        
       }}>추가</button>
     </div>
     
