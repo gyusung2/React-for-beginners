@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@100;200;300;400&display=swap');
 .App {
   text-align: center;
 }
@@ -12,7 +13,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+* {
+  font-family: 'Gowun Dodum', sans-serif;
+font-family: 'IBM Plex Sans KR', sans-serif;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -33,8 +37,16 @@
   color: white;
   padding-left: 20px;
 }
+
+button {
+  border: none;
+  padding: 15px;
+  background-color: transparent;
+  margin-left: 15px;
+}
 div {
   box-sizing: border-box;
+ 
 }
 .list {
   padding-left: 20px;
