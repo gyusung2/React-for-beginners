@@ -56,7 +56,7 @@ function App() {
         let copy =[...글제목];
         copy.sort();
         글제목변경(copy);
-        }}>가나다라마바사 -박재범(feat.아이유)</button>
+        }}>정렬</button>
 
     {
       글제목.map(function(a , i){
