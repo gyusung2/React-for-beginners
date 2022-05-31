@@ -8,6 +8,7 @@ function App() {
   let [ 글제목 , 글제목변경 ] = useState(['아디다스' , '나이키' , '뉴발란스']);
   let [따봉, 따봉추가] = useState([0 , 0 , 0]);
   let [modal , setModal] = useState(false);
+  let [title , setTitle] = useState(0);
 
   return (
     <div className="App">
@@ -31,7 +32,7 @@ function App() {
       글제목.map(function(a , i){
         return (
           <div className='list'>
-           <h4 onClick={()=>{setModal(!modal)}}>{글제목[i]}<span onClick={()=>{
+           <h4 onClick={()=>{setModal(!modal); setTitle(i);}}>{글제목[i]}<span onClick={()=>{
              let copy = [...따봉];
              copy[i] = copy[i] + 1;
              따봉추가(copy);
@@ -40,12 +41,24 @@ function App() {
           </div>
         )
       })
+
+      // 글제목12.map(function(a , i){
+      //   return(
+      //     <div className='list'>
+      //       <h4 onClick={()=>{setModal(!modal)}}>{글제목[i]}<span onClick={()=>{
+      //         let copy =[...따봉];
+      //         copy[i] = copy[i] + 1;
+      //         따봉추가(copy);
+      //       }}>👍</span>{따봉[i]}</h4>
+      //       <p>5월 31일</p>
+      //     </div>
+      //   )
+      // })
       }
 
     
-
       {
-        modal == true ? <Modal></Modal> : null
+        modal == true ? <Modal title = {title} 글제목 = {글제목}></Modal> : null
       }
 
       
@@ -69,14 +82,19 @@ function App() {
 
 
 
-function Modal(){
+function Modal(props){
   return (
       <>    
       <div className="modal">
-      <h4>제목</h4>
+      <h4>{props.글제목[props.title]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
       </div>
+      <button onClick={()=>{
+      props.글제목변경();
+       let copy =[...글제목];
+       copy[0] = '슈퍼스타';
+       글제목변경(copy)}}>글 수정</button>
       </>
 
   )
@@ -84,3 +102,5 @@ function Modal(){
 
 
 export default App;
+
+//  모달창 ~ props를 응용한 상세페이지 만들기
