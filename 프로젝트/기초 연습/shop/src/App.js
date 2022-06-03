@@ -59,9 +59,9 @@ function App(){
         </Route>
         
         
-        <Route path="/event" element={ <Event/> }>
-        <Route path="one" element={ <div>생일기념 쿠폰 받기</div> } />
-        <Route path="two" element={ <div>양배추즙 서비스</div> } />
+        <Route path="/event" element={ <Event/> }>  
+        <Route path="one" element={ <div>양배추</div> } />
+        <Route path="two" element={ <div>생일</div> } />
         </Route>
 
 
@@ -81,6 +81,15 @@ function App(){
   )
 }
 
+function Card(props) {
+  return (
+    <div className="col-md-4">
+          <img src={'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg'} width="80%" />
+          <h4>{props.shoes.title}</h4>
+          <p>{props.shoes.price}</p>
+        </div>
+  )
+}
 function About() {
   return(
     <div>
@@ -99,15 +108,6 @@ function Event() {
   )
 }
     
-  function Card(props) {
-    return (
-      <div className="col-md-4">
-            <img src={'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg'} width="80%" />
-            <h4>{props.shoes.title}</h4>
-            <p>{props.shoes.price}</p>
-          </div>
-    )
-  }
 
 
 
