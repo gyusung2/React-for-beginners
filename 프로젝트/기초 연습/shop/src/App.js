@@ -49,7 +49,8 @@ function App(){
         </>
         }></Route>
 
-        <Route path="/detail" element= {<Detail></Detail>}></Route>
+        <Route path="/detail/:id" element= {<Detail shoes={shoes} ></Detail>}></Route>
+       
         
         <Route path='*' element={<div>없는 페이지 입니다.</div>}></Route>
 
