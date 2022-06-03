@@ -33,8 +33,7 @@ function Detail(props){
       <div className="container">
         <>
         {
-          alert == true
-          ? <div className="alert alert-warning">
+          alert == true  ? <div className="alert alert-warning">
               2초이내 구매시 할인
             </div>
           : null
