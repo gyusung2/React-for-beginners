@@ -6,16 +6,35 @@ import { useState } from 'react';
 function App() {
   let post = ['나이키'];
   let [title , setTitle] = useState(['스포츠 브랜드 추천', '의류 브랜드 추천', '신발 브랜드 추천'])
-  let [like , setLike] = useState(0);
+  let [like , setLike] = useState([0,0,0]);
   let [modal ,setModal] = useState(false);
   return (
     
     <div className="App">
      <div className='black-nav'>
        <h4>미니블로그</h4>
-     </div>
-     <div className="list">
-        <h4>{title[0]}<span onClick={()=>{
+       </div>
+       {
+        title.map(function(a , i){
+          return(
+            <div className="list">
+            <h4 onClick={()=>{
+            setModal(!modal)
+            }}>{title[i]}<span onClick={()=>{
+            let copy = [...like];
+            copy[i] = copy[i] + 1;
+            setLike(copy)
+           }}>👍</span>{like[i]}</h4>
+          <p>2월 17일 발행</p>
+          </div>
+          )
+        })
+       }
+    
+     {/* <div className="list">
+        <h4 onClick={()=>{
+           setModal(!modal)
+        }}>{title[0]}<span onClick={()=>{
           setLike(like + 1)
         }}>👍</span>{like}</h4>
         <p>2월 17일 발행</p>
@@ -25,12 +44,11 @@ function App() {
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
-        <h4 onClick={()=>{
-          setModal(!modal)
-        }}>{title[2]}</h4>
+        <h4>{title[2]}</h4>
         <p>2월 17일 발행</p>
-      </div>
-    
+      </div> */}
+
+         
   {
   modal == true ? <Modal></Modal> : null
 
