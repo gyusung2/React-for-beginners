@@ -14,10 +14,12 @@ import styled from 'styled-components';
 
 function Detail(props){
     useEffect(()=>{
+
       setTimeout(()=>{ setAlert(false) }, 2000)
     }, [])
-    let [alert , setAlert] = useState(true)
+    
     let [count , setCount] = useState(0)
+    let [alert , setAlert] = useState(true)
 
     let {id} = useParams();
     let 찾은상품 = props.shoes.find(function(x){
@@ -34,6 +36,8 @@ function Detail(props){
           :null
 
           }
+         
+          
           {count}
           <button onClick={()=>{setCount(count+1)
           }}>버튼</button>
