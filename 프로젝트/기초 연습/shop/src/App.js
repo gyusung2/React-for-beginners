@@ -49,7 +49,7 @@ function App(){
         </>
         }></Route>
 
-        <Route path="/detail" element= {<Detail></Detail>}></Route>
+        <Route path="/detail/:id" element= {<Detail shoes={shoes} ></Detail>}></Route>
         <Route path='*' element={<div>없는 페이지 입니다.</div>}></Route>
 
 
@@ -58,6 +58,13 @@ function App(){
         <Route path="member" element= {<div>멤버</div>}></Route>
         <Route path="location" element= {<div>대전</div>}></Route>
         </Route>
+
+        <Route path="/event" element= {<Event></Event>}>
+        <Route path="event1" element= {<div>첫 주문시 양배추 서비스</div>}></Route>
+        <Route path="event2" element= {<div>생일 쿠폰 서비스</div>}></Route>
+        </Route>
+
+    
         
 
 
@@ -92,7 +99,17 @@ function About(){
     </div>
   )
 }
-    
+
+function Event() {
+  return (
+    <div>
+      <h4>오늘의 이벤트</h4>
+      <Outlet></Outlet>
+    </div>
+    )
+}
+
+
 
 
 
