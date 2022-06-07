@@ -19,7 +19,7 @@ function App(){
           <Container >
           <Navbar.Brand href="#home" className='navbar'>ShoeShop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={()=>{navigate('/')}} className="link" to = '/'>home</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/')}} className="link" to = '/'>Home</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/detail')}} className="link" to = '/'>Best</Nav.Link>
             <Link className="link" to = '/'>New</Link>
           </Nav>
@@ -49,29 +49,28 @@ function App(){
         </>
         }></Route>
 
-        <Route path="/detail/:id" element= {<Detail shoes={shoes}></Detail>}></Route>
+        
+        <Route path="/detail/:id" element= {<Detail shoes={shoes} ></Detail>}></Route>
         <Route path='*' element={<div>없는 페이지 입니다.</div>}></Route>
-       
-        
 
-        <Route path="/about" element={ <About/> }>  
-        <Route path="member" element={ <div>멤버들</div> } />
-        <Route path="location" element={ <div>회사위치</div> } />
-        </Route>
-        
-        
-        <Route path="/event" element={ <Event/> }>  
-        <Route path="one" element={ <div>양배추</div> } />
-        <Route path="two" element={ <div>생일</div> } />
+
+
+        <Route path="/about" element= {<About></About>}>
+        <Route path="member" element= {<div>멤버</div>}></Route>
+        <Route path="location" element= {<div>대전</div>}></Route>
         </Route>
 
+        <Route path="/event" element= {<Event></Event>}>
+        <Route path="event1" element= {<div>첫 주문시 양배추 서비스</div>}></Route>
+        <Route path="event2" element= {<div>생일 쿠폰 서비스</div>}></Route>
+        </Route>
 
-
+    
+        
 
 
 
       </Routes>
-
 
 
       <div>
@@ -91,24 +90,27 @@ function Card(props) {
         </div>
   )
 }
-function About() {
-  return(
+
+
+function About(){
+  return (
     <div>
-      <h4>회사 정보</h4>
+      <h4>about페이지임</h4>
       <Outlet></Outlet>
     </div>
   )
 }
 
 function Event() {
-  return(
+  return (
     <div>
       <h4>오늘의 이벤트</h4>
       <Outlet></Outlet>
     </div>
-  )
+    )
 }
-    
+
+
 
 
 
