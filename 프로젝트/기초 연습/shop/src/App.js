@@ -49,29 +49,20 @@ function App(){
         </>
         }></Route>
 
-        <Route path="/detail/:id" element= {<Detail shoes={shoes}></Detail>}></Route>
+        <Route path="/detail" element= {<Detail></Detail>}></Route>
         <Route path='*' element={<div>없는 페이지 입니다.</div>}></Route>
-       
-        
 
-        <Route path="/about" element={ <About/> }>  
-        <Route path="member" element={ <div>멤버들</div> } />
-        <Route path="location" element={ <div>회사위치</div> } />
+
+
+        <Route path="/about" element= {<About></About>}>
+        <Route path="member" element= {<div>멤버</div>}></Route>
+        <Route path="location" element= {<div>대전</div>}></Route>
         </Route>
         
-        
-        <Route path="/event" element={ <Event/> }>  
-        <Route path="one" element={ <div>양배추</div> } />
-        <Route path="two" element={ <div>생일</div> } />
-        </Route>
-
-
-
 
 
 
       </Routes>
-
 
 
       <div>
@@ -91,19 +82,12 @@ function Card(props) {
         </div>
   )
 }
-function About() {
-  return(
-    <div>
-      <h4>회사 정보</h4>
-      <Outlet></Outlet>
-    </div>
-  )
-}
 
-function Event() {
-  return(
+
+function About(){
+  return (
     <div>
-      <h4>오늘의 이벤트</h4>
+      <h4>about페이지임</h4>
       <Outlet></Outlet>
     </div>
   )

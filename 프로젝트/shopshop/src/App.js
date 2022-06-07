@@ -19,21 +19,18 @@ function App() {
 
     
     <div className='App'>
+     
 
-  
-
-    <Navbar bg="dark" variant="dark">
+  <Navbar bg="white" variant="black">
       <Container>
-      <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+      <Navbar.Brand href="#home" className='navbar'>ShoeShop</Navbar.Brand>
       <Nav className="me-auto">
-      <Link to ="/">홈</Link>
-      <Link to ="/detail">상세페이지</Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
-      </Nav>
+            <Nav.Link  className="link" to = '/'>home</Nav.Link>
+            <Nav.Link className="link" to = '/detail'>Best</Nav.Link>
+            <Nav.Link className="link" to = '/'>New</Nav.Link>
+          </Nav>
       </Container>
     </Navbar>
-
-    
 
       <Routes>
       <Route path="/" element={ 
@@ -48,29 +45,15 @@ function App() {
     </div> 
   </>
 } /> 
-      <Route path="/detail" element={ <Detail/> } />
-      <Route path="/about" element={ <div>어바웃페이지임</div> } />
+    
+     
     </Routes>
+  
+
 
    
   </div>
   );
-
-  function Detail(props) {
-    return(
-      <div className="row">
-    <div className="col-md-6">
-      <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
-    </div>
-    <div className="col-md-6">
-      <h4 className="pt-5">상품명</h4>
-      <p>상품설명</p>
-      <p>120000원</p>
-      <button className="btn btn-danger">주문하기</button> 
-    </div>
-  </div>
-    )
-  }
 
   function Card(props) {
     return(
@@ -84,6 +67,8 @@ function App() {
   }
 
 }
+
+
 
 
 export default App;
