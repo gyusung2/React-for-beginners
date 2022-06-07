@@ -19,7 +19,7 @@ function App(){
           <Container >
           <Navbar.Brand href="#home" className='navbar'>ShoeShop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link onClick={()=>{navigate('/')}} className="link" to = '/'>home</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/')}} className="link" to = '/'>Home</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/detail')}} className="link" to = '/'>Best</Nav.Link>
             <Link className="link" to = '/'>New</Link>
           </Nav>
