@@ -19,7 +19,9 @@ function App(){
     <div className='App'>
         <Navbar bg="white" variant="black">
           <Container >
-          <Navbar.Brand href="#home" className='navbar'>ShoeShop</Navbar.Brand>
+         
+          <Navbar.Brand href="#home" className='navbar' onClick={()=>{navigate('/')}}>ShoeShop</Navbar.Brand>
+         
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{navigate('/')}} className="link" to = '/'>Home</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/detail/1')}} className="link" to = '/'>Best</Nav.Link>
