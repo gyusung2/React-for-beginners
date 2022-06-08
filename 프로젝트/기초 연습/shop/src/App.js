@@ -117,7 +117,7 @@ function Card(props) {
   return (
     <div className="col-md-4">
       <Link to='/detail/1'>
-          <img onClick={()=>{props.navigate('/detail:id') }} src={'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg'} width="80%" />
+          <img src={'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg'} width="80%" />
         </Link>
           <h4>{props.shoes.title}</h4>
           <p>{props.shoes.price}</p>
