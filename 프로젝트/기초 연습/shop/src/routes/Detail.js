@@ -13,13 +13,20 @@ import styled from 'styled-components';
 // `
 
 function Detail(props){
+  let [num, setNum] = useState('')
+  let [count , setCount] = useState(0)
+  let [alert , setAlert] = useState(true)
     useEffect(()=>{
+      setTimeout(()=>{ setAlert(false) }, 5000)
+    }, []); 
 
-      setTimeout(()=>{ setAlert(false) }, 2000)
-    }, [])
+    useEffect(()=>{
+      if (isNaN(num) == true){
+        alert('그러지마세요')
+      }
+    }, [num]);
     
-    let [count , setCount] = useState(0)
-    let [alert , setAlert] = useState(true)
+    
 
     let {id} = useParams();
     let 찾은상품 = props.shoes.find(function(x){
@@ -27,15 +34,29 @@ function Detail(props){
     });
     
   return(
-        <div className="container">
-          {
+    // <input onChange((e)=>{ setNum(e.target.value) })  해결못함/> 
+    <div className="container">
+         {
+           alert == true ?
+           <div className="alert alert-warning">
+             5초 이내 구매하세요
+           </div>
+           :null
+
+          }
+         
+          
+          
+          
+         
+          {/* {
             alert == true ?
           <div className="alert alert-warning">
-            2초이내 구매하세요 !
+            5초이내 구매하세요 !
           </div>
           :null
 
-          }
+          } */}
          
           
           {count}
@@ -53,9 +74,12 @@ function Detail(props){
               <h4 className="pt-5">{props.shoes[id].title}</h4>
               <p>{props.shoes[id].price}</p>
               <p>{props.shoes[id].content}</p>
-              <button className="btn btn-danger">주문하기</button> 
+              <button className="btn btn-danger">주문하기</button>
+            
             </div>
+          
           </div>
+          
         </div> 
 
   )
