@@ -64,11 +64,11 @@ function App(){
             })
             
             if(cnt == 1){
+              setCnt(cnt+1);
               axios.get('https://codingapple1.github.io/shop/data3.json')
               .then((결과)=>{
                 let copy = [...shoes, ...결과.data]
                 setShoes(copy)
-                setCnt(cnt+1);
                 })
                 .catch(()=>{
                   console.log('실패');
