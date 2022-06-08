@@ -22,7 +22,7 @@ function App(){
           <Navbar.Brand href="#home" className='navbar'>ShoeShop</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{navigate('/')}} className="link" to = '/'>Home</Nav.Link>
-            <Nav.Link onClick={()=>{navigate('/detail')}} className="link" to = '/'>Best</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/detail/1')}} className="link" to = '/'>Best</Nav.Link>
             <Link className="link" to = '/'>New</Link>
           </Nav>
           </Container>
@@ -55,7 +55,7 @@ function App(){
           .then((결과)=>{
             let copy = [...shoes, ...결과.data]
             setShoes(copy)
-            setCnt(cnt+1)
+            setCnt(cnt+1);
             })
             .catch(()=>{
               console.log('실패');
@@ -116,7 +116,9 @@ function App(){
 function Card(props) {
   return (
     <div className="col-md-4">
-          <img src={'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg'} width="80%" />
+      <Link to='/detail/1'>
+          <img onClick={()=>{props.navigate('/detail:id') }} src={'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg'} width="80%" />
+        </Link>
           <h4>{props.shoes.title}</h4>
           <p>{props.shoes.price}</p>
         </div>
