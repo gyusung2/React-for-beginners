@@ -11,6 +11,8 @@ import axios  from 'axios';
 
 
 
+
+
 function App(){
   let [shoes , setShoes] = useState(data);
   let navigate = useNavigate();
@@ -44,7 +46,7 @@ function App(){
           {
             shoes.map((a , i) => {
               return (
-                <Card shoes={shoes[i]} i={i}></Card>
+                <Card shoes={shoes[i]} i ={i} key ={i}></Card>
               )
             })
           }
