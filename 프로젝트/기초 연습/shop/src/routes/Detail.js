@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import '../App.css';
 import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 import {Nav} from 'react-bootstrap';
@@ -18,6 +19,7 @@ function Detail(props){
   let [count , setCount] = useState(0)
   let [alert , setAlert] = useState(true)
   let [탭 , 탭변경] = useState(0)
+  let [fade2, setFade2] = useState('')
     useEffect(()=>{
       setTimeout(()=>{ setAlert(false) }, 5000)
     }, []); 
@@ -27,6 +29,15 @@ function Detail(props){
         alert('그러지마세요')
       }
     }, [num]);
+
+
+
+    useEffect(()=>{
+      setTimeout(()=>{ setFade2('end')}, 100)
+       return ()=>{
+         setFade2('')
+       }
+     }, [])
     
     
 
@@ -37,7 +48,8 @@ function Detail(props){
     
   return(
     // <input onChange((e)=>{ setNum(e.target.value) })  해결못함/> 
-    <div className="container">
+    <div className={"container  start " + fade2}>
+   
          {
            alert == true ?
            <div className="alert alert-warning">
@@ -95,34 +107,47 @@ function Detail(props){
               <Nav.Link onClick={()=>{탭변경(2)}}  eventKey="link2">버튼2</Nav.Link>
             </Nav.Item>
         </Nav>
-        
-      
-        <Tab 탭={탭}></Tab>
+
+          <Tab 탭={탭}></Tab>
           </div>
 
   )
 }
 
 
-function Tab(props){
+//방법1 function Tab(props){
   
-if(props.탭 == 0) {
-  return <div>내용0</div>
-}
-else if(props.탭 == 1) {
-  return <div>내용1</div>
-}
-else if(props.탭 == 2) {
-  return <div>내용2</div>
-}
+// if(props.탭 == 0) {
+//   return <div>내용0</div>
+// }
+// else if(props.탭 == 1) {
+//   return <div>내용1</div>
+// }
+// else if(props.탭 == 2) {
+//   return <div>내용2</div>
+// }
+// }
 
 // 방법2. function TabContent(props){
 //   return [ <div>내용0</div>, <div>내용1</div>, <div>내용2</div> ][props.탭]
 // }
 
-// 방법3 .function TabContent({탭}){
-//   return [ <div>내용0</div>, <div>내용1</div>, <div>내용2</div> ][탭]
-// }
+function Tab({탭}){
+
+  let [fade, setFade] = useState('')
+
+    useEffect(()=>{
+     setTimeout(()=>{ setFade('end')}, 100)
+      return ()=>{
+        setFade('')
+      }
+    }, [탭])
+
+  return (
+    <div className={'start ' + fade}>
+      { [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][탭] }
+    </div>
+  )
 }
 
   export default Detail;
