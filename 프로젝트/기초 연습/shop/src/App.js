@@ -29,6 +29,7 @@ function App(){
             <Nav.Link onClick={()=>{navigate('/')}} className="link" to = '/'>Home</Nav.Link>
             <Nav.Link onClick={()=>{navigate('/detail/1')}} className="link" to = '/'>Best</Nav.Link>
             <Link className="link" to = '/'>New</Link>
+            <Link className="link" to = '/cart'>Cart</Link>
           </Nav>
           </Container>
         </Navbar>
