@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import '../App.css';
 import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 import {Nav} from 'react-bootstrap';
+
 
 // let YellowBtn = styled.button`
 // background: ${props => props.bg};
@@ -15,6 +16,8 @@ import {Nav} from 'react-bootstrap';
 // `
 
 function Detail(props){
+
+
   let [num, setNum] = useState('')
   let [count , setCount] = useState(0)
   let [alert , setAlert] = useState(true)
@@ -29,6 +32,8 @@ function Detail(props){
         alert('그러지마세요')
       }
     }, [num]);
+
+  
 
 
 
@@ -47,7 +52,9 @@ function Detail(props){
     });
     
   return(
-    // <input onChange((e)=>{ setNum(e.target.value) })  해결못함/> 
+        
+    
+        
     <div className={"container  start " + fade2}>
    
          {
@@ -56,9 +63,10 @@ function Detail(props){
              5초 이내 구매하세요
            </div>
            :null
-
+           
           }
          
+          
           
           
           
@@ -78,6 +86,8 @@ function Detail(props){
           <YellowBtn bg="royalblue">버튼</YellowBtn>
         </Box> */}
           <div className="row">
+
+         
             <div className="col-md-6">
               <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
             </div>
@@ -92,6 +102,7 @@ function Detail(props){
 
               }}>감소</button>
               <button className="btn btn-danger">주문하기</button>
+        
             </div>
 
         

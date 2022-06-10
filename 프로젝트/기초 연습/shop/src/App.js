@@ -8,6 +8,7 @@ import data from './data.js';
 import{Routes, Route, Link , useNavigate , Outlet} from 'react-router-dom'
 import Detail from './routes/Detail.js';
 import axios  from 'axios';
+import Cart from './routes/Cart.js'
 
 
 
@@ -100,6 +101,8 @@ function App(){
         <Route path="event1" element= {<div>첫 주문시 양배추 서비스</div>}></Route>
         <Route path="event2" element= {<div>생일 쿠폰 서비스</div>}></Route>
         </Route>
+
+        <Route path='/cart' element={<Cart></Cart>}></Route>
 
     
         
