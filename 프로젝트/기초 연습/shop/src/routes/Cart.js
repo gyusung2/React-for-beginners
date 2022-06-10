@@ -11,7 +11,7 @@ function Cart() {
    let dispatch =  useDispatch()
     return (
         <div>
-            {state.user}의 장바구니
+            {state.user.name}의 장바구니
                     <Table>
             <thead>
                 <tr>
