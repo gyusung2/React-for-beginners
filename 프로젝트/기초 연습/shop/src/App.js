@@ -7,21 +7,29 @@ import { useState } from 'react';
 import data from './data.js';
 import{Routes, Route, Link , useNavigate , Outlet} from 'react-router-dom'
 import Detail from './routes/Detail.js';
+import axios  from 'axios';
+import Cart from './routes/Cart.js'
+
+
 
 
 
 function App(){
-  let [shoes , buy] = useState(data);
+  let [shoes , setShoes] = useState(data);
   let navigate = useNavigate();
+  let [cnt , setCnt] = useState(0);
   return (
     <div className='App'>
         <Navbar bg="white" variant="black">
           <Container >
-          <Navbar.Brand href="#home" className='navbar'>ShoeShop</Navbar.Brand>
+         
+          <Navbar.Brand href="#home" className='navbar' onClick={()=>{navigate('/')}}>ShoeShop</Navbar.Brand>
+         
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{navigate('/')}} className="link" to = '/'>Home</Nav.Link>
-            <Nav.Link onClick={()=>{navigate('/detail')}} className="link" to = '/'>Best</Nav.Link>
+            <Nav.Link onClick={()=>{navigate('/detail/1')}} className="link" to = '/'>Best</Nav.Link>
             <Link className="link" to = '/'>New</Link>
+            <Link className="link" to = '/cart'>Cart</Link>
           </Nav>
           </Container>
         </Navbar>
@@ -40,18 +48,48 @@ function App(){
           {
             shoes.map((a , i) => {
               return (
-                <Card shoes={shoes[i]} i={i}></Card>
+                <Card shoes={shoes[i]} i ={i} key ={i}></Card>
               )
             })
           }
         </div>
         </div>
+        
+        <button onClick={()=>{ 
+         
+          axios.get('https://codingapple1.github.io/shop/data2.json')
+          .then((결과)=>{
+            let copy = [...shoes, ...결과.data]
+            setShoes(copy)
+            setCnt(cnt+1);
+            })
+            .catch(()=>{
+              console.log('실패');
+            })
+            
+            if(cnt == 1){
+              setCnt(cnt+1);
+              axios.get('https://codingapple1.github.io/shop/data3.json')
+              .then((결과)=>{
+                let copy = [...shoes, ...결과.data]
+                setShoes(copy)
+                })
+                .catch(()=>{
+                  console.log('실패');
+                })
+            }
+            if (cnt == 2) {
+              alert('없어요')
+            }
+        }}>더 보기</button>
         </>
         }></Route>
 
         
         <Route path="/detail/:id" element= {<Detail shoes={shoes} ></Detail>}></Route>
         <Route path='*' element={<div>없는 페이지 입니다.</div>}></Route>
+
+
 
 
 
@@ -64,6 +102,8 @@ function App(){
         <Route path="event1" element= {<div>첫 주문시 양배추 서비스</div>}></Route>
         <Route path="event2" element= {<div>생일 쿠폰 서비스</div>}></Route>
         </Route>
+
+        <Route path='/cart' element={<Cart></Cart>}></Route>
 
     
         
@@ -84,7 +124,9 @@ function App(){
 function Card(props) {
   return (
     <div className="col-md-4">
+      <Link to='/detail/1'>
           <img src={'https://codingapple1.github.io/shop/shoes' + (props.i+1) + '.jpg'} width="80%" />
+        </Link>
           <h4>{props.shoes.title}</h4>
           <p>{props.shoes.price}</p>
         </div>
