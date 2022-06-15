@@ -13,7 +13,7 @@ function App (){
   return (
     <div>
       (생략)
-      <Modal></Modal>
+    ->  <Modal></Modal>
     </div>
   )
 }
@@ -51,7 +51,7 @@ return(
 
 
 <div> 두개를 나란히 적고 싶으면 저렇게 하나의 div로 또 감싸거나 해야합니다.
-의미없는 div 쓰기 싫으면 <> </> 이걸로 감싸도 됩니다. s
+의미없는 div 쓰기 싫으면 <> </> 이걸로 감싸도 됩니다. 
 fragment 문법이라고 합니다. 
 ```
 
