@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from "react";
+import { configureStore , createSlice } from "@reduxjs/toolkit";
 import "../App.css";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Nav } from "react-bootstrap";
+import {addItem} from './../Store.js';
+import {useDispatch} from 'react-redux';
 
 // let YellowBtn = styled.button`
 // background: ${props => props.bg};
@@ -14,11 +17,13 @@ import { Nav } from "react-bootstrap";
 // padding : 20px;
 // `
 
+
 function Detail(props) {
   let [num, setNum] = useState("");
   let [count, setCount] = useState(0);
   let [alert, setAlert] = useState(true);
   let [탭, 탭변경] = useState(0);
+  let dispatch = useDispatch();
   let [fade2, setFade2] = useState("");
   useEffect(() => {
     setTimeout(() => {
@@ -91,7 +96,9 @@ function Detail(props) {
           >
             감소
           </button>
-          <button className="btn btn-danger">주문하기</button>
+          <button className="btn btn-danger" onClick={()=>{
+              dispatch(addItem( {id : 1, name : 'Red Knit', count : 1} ))
+          }}>주문하기</button>
         </div>
       </div>
       <Nav variant="tabs" defaultActiveKey="link0">
