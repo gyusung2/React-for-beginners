@@ -14,6 +14,12 @@ function App() {
   let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
   let [cnt, setCnt] = useState(0);
+  let obj = { name: "lee" };
+  localStorage.setItem("data", JSON.stringify(obj));
+  let 꺼내기 = localStorage.getItem("data");
+  JSON.parse(꺼내기);
+  console.log(JSON.parse(꺼내기).name);
+
   return (
     <div className="App">
       <Navbar bg="white" variant="black">
