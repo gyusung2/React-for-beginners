@@ -7,12 +7,16 @@ import data from './data.js';
 import { useState } from 'react';
 import { Route, Link, Routes, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './routes/Detail.js'
+import axios from 'axios';
 
 
 function App() {
-  let [shoes] = useState(data);
+  let [click , setClick] = useState(0);
+  let [shoes , setShoes] = useState(data);
   let navigate = useNavigate();
+  
   return (
+
     <div className="App">
 
       <div>
@@ -45,6 +49,25 @@ function App() {
                   })
                 }
               </div>
+              <button onClick={()=>{
+                axios.get('https://codingapple1.github.io/shop/data2.json').then((item)=>{
+                  let copy = [...shoes, ...item.data]
+                  setShoes(copy)
+                  setClick(click+1)
+                })
+                if(click == 1) {
+                  axios.get('https://codingapple1.github.io/shop/data2.json').then((item)=>{
+                    let copy = [...shoes, ...item.data]
+                    setShoes(copy)
+                    setClick(click+1)
+                }
+                
+                )
+              }
+              if(click == 2) {
+              alert('그만눌러 🙅‍♂️')
+            }
+              }}>더 보기</button>
             </div>
           </div>} />
           <Route path="/about" element={<About></About>} />

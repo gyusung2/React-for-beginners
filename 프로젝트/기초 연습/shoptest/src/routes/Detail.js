@@ -15,11 +15,11 @@ function Detail(props) {
   useEffect(() => {
     setTimeout(() => { setAlert(false) }, 5000);
   })
- 
 
   let [count, setCount] = useState(0);
   let [alert, setAlert] = useState(true);
-  
+  let [num, setNum] = useState('');
+
 
   let { id } = useParams();
   console.log(id);
@@ -28,15 +28,15 @@ function Detail(props) {
   })
 
   return (
-     
-    
+
+
     <div className="container">
-     
+
       {
-        alert == true ?  <div className="alert alert-warning">5초 이내 구매시 할인</div> : null
+        alert == true ? <div className="alert alert-warning">5초 이내 구매시 할인</div> : null
       }
       {count}
-      <button onClick={()=>{setCount(count+1)}}>버튼</button>
+      <button onClick={() => { setCount(count + 1) }}>버튼</button>
       <div className="row">
         <div className="col-md-6">
           <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
