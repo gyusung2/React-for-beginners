@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { nameChange, addCount } from "./../Store.js";
+
+function 함수() {
+  return;
+}
 
 function Cart() {
   let state = useSelector((state) => {

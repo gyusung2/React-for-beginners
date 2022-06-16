@@ -9,6 +9,9 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./routes/Detail.js";
 import axios from "axios";
 import Cart from "./routes/Cart.js";
+import {useQuery} from "react-query"
+
+  
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -19,6 +22,12 @@ function App() {
   let 꺼내기 = localStorage.getItem("data");
   JSON.parse(꺼내기);
   console.log(JSON.parse(꺼내기).name);
+
+
+  let result = useQuery('작명', ()=>
+    axios.get('https://codingapple1.github.io/userdata.json')
+    .then((a)=>{ return a.data })
+  )
 
   return (
     <div className="App">
@@ -59,6 +68,9 @@ function App() {
             <Link className="link" to="/cart">
               Cart
             </Link>
+          </Nav>
+          <Nav className="ms-auto">
+            {result.isLoading ? '로딩중' : result.data.name}
           </Nav>
         </Container>
       </Navbar>
