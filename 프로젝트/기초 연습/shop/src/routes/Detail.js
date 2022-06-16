@@ -7,11 +7,7 @@ import { Nav } from "react-bootstrap";
 import { addItem } from "./../Store.js";
 import { useDispatch } from "react-redux";
 
-
-
 import axios from "axios";
-
-
 
 // let YellowBtn = styled.button`
 // background: ${props => props.bg};
@@ -34,22 +30,17 @@ function Detail(props) {
   let [탭, 탭변경] = useState(0);
   let dispatch = useDispatch();
 
-  useEffect(()=>{
-
+  useEffect(() => {
     // 2. localStorage의 데이터를 꺼낸다.
-    var myArr = localStorage.getItem('watched');
+    var myArr = localStorage.getItem("watched");
 
     // 최초 접속시 localStorage에 데이터가 없을 경우 새로운 배열을 생성한다.
     // ( 혹은 사용자 모두에게 watched 자료형를 localStorage에 넣는 방법도 있다.)
-    if(myArr == null){
-
+    if (myArr == null) {
       myArr = [];
-
-    }else{
-
+    } else {
       // myArr에서 자료를 꺼내 따옴표를 제거하고 다시 myArr에 저장한다.
       myArr = JSON.parse(myArr);
-
     }
 
     // 3.현재 상품 id를 myArr에 저장한다.
@@ -62,9 +53,8 @@ function Detail(props) {
     myArr = [...myArr];
 
     // 5.localStorage에 데이터를 JSON 자료형으로 저장한다.
-    localStorage.setItem('watched', JSON.stringify(myArr));
-
-  },[]);
+    localStorage.setItem("watched", JSON.stringify(myArr));
+  }, []);
 
   let [fade2, setFade2] = useState("");
   useEffect(() => {
@@ -202,26 +192,39 @@ function Detail(props) {
 //   return [ <div>내용0</div>, <div>내용1</div>, <div>내용2</div> ][props.탭]
 // }
 
-
-function Lasted(props){
+function Lasted(props) {
   let history = useHistory();
-  var myArr = localStorage.getItem('watched');
+  var myArr = localStorage.getItem("watched");
   myArr = JSON.parse(myArr);
-  
-  return(
+
+  return (
     <div className="lasted">
       <h3>최근본상품 목록</h3>
-      {
-        myArr.map((a,i)=>{ 
-          return (
-            <div className="row" shoes={props.shoes[i]} i={i} key={i}  onClick={()=>{history.push('/detail/'+props.shoes[a].id)}}>
-              <img src={"https://codingapple1.github.io/shop/shoes"+(props.shoes[a].id+1)+".jpg"} width="100%" alt="이미지"/>
-              <h5>{props.shoes[a].title}</h5>
-              <p>{props.shoes[a].price}</p>
-            </div>
-           )
-        }) 
-      }
+      {myArr.map((a, i) => {
+        return (
+          <div
+            className="row"
+            shoes={props.shoes[i]}
+            i={i}
+            key={i}
+            onClick={() => {
+              history.push("/detail/" + props.shoes[a].id);
+            }}
+          >
+            <img
+              src={
+                "https://codingapple1.github.io/shop/shoes" +
+                (props.shoes[a].id + 1) +
+                ".jpg"
+              }
+              width="100%"
+              alt="이미지"
+            />
+            <h5>{props.shoes[a].title}</h5>
+            <p>{props.shoes[a].price}</p>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -244,6 +247,5 @@ function Tab({ 탭 }) {
     </div>
   );
 }
-
 
 export default Detail;
