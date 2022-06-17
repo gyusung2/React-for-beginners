@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Box from './component/Box.js'
+import { useState } from 'react';
 // 1. 박스 2개 (타이틀 , 사진 ,결과)
 // 2.  버튼
 // 3. 버튼 클릭 시 값이 보임
@@ -23,8 +24,11 @@ import Box from './component/Box.js'
  }
 
 function App() {
+  const [userSelect , setUserSelect] = useState(null)
+
   const play = (userChoice)=>{
-    console.log("선택" ,userChoice );
+    userSelect = choice[userChoice]
+
   }
 
   return (
