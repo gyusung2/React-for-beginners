@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Joan&display=swap');body {
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Joan&display=swap');
+body {
   text-align: center;
-  font-family: 'Gowun Dodum', 'Joan', sans-serif;
+ 
 
 }
 .box {
@@ -19,6 +20,7 @@
 .main {
   display: flex;
   justify-content: center;
+  font-family: 'Gowun Dodum', 'Joan', sans-serif;
 }
 
 
@@ -26,6 +28,7 @@
   border: none;
   padding: 15px;
   margin: 60px 35px 0;
+  font-family: 'Gowun Dodum', 'Joan', sans-serif;
  
 
 }
