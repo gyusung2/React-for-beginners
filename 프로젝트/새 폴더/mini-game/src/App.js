@@ -24,18 +24,29 @@ import { useState } from 'react';
  }
 
 function App() {
-  const [userSelect , setUserSelect] = useState(null)
-  const [computerSelect, setComputerSelect] = useState(null)
+  const [userSelect , setUserSelect] = useState(null) //유저값
+  const [computerSelect, setComputerSelect] = useState(null) //컴퓨터 값
+  const [result , setResult] = useState("") // 승 , 패 결과값 
   
   const play = (userChoice)=>{
-   setUserSelect(choice[userChoice]) 
+    setUserSelect(choice[userChoice])  //할당 하고 싶은 값을 넣어둔다
     let computerChoice = randomChoice()
     setComputerSelect(computerChoice)
+
+    setResult(judgement(choice[userChoice] , computerChoice)) //함수로 이동
+  }
+  // 5 , 6 강의 다시 보기!! [누른 값 컴퓨터 값 사용자 값 비교하여 출력 ]
+  const judgement = (user, computer) => {
+    if(user.name == computer.name) {
+      return "tie"
+    }else if(user.name == "Rock") return computer.name == "Scissors"? "win" : "lose"
+    else if(user.name == "Scissors") return computer.name =="Paper"? "win" : "lose"
+    else if(user.name == "Paper") return computer.name =="Rock" ? "win" : "lose"
   }
 
   const randomChoice=()=>{
     let itemArray = Object.keys(choice) //객체에 키 값만 뽑아서 어레이로 만들어 주는 함수
-    let randomItem = Math.floor(Math.random() * itemArray.length) 
+    let randomItem = Math.floor(Math.random() * itemArray.length) // 숫자 객체만큼 곱해서 랜덤값 출력 !
     let final = itemArray[randomItem]
     return choice[final]
 
@@ -46,14 +57,15 @@ function App() {
     <div>
     <div className='main'>
       {/* const [userSelect , setUserSelect] = useState(null) 값을 넣어줌 */}
-     <Box title="You" item={userSelect}></Box>
-     <Box title="Computer" item={computerSelect}></Box>
+     <Box title="You" item={userSelect} result={result}></Box>
+     <Box title="Computer" item={computerSelect}  result={result}></Box>
     </div>
 
     <div className='main'>
       <button onClick={()=> play("scissors")}>가위</button>
       <button onClick={()=> play("rock")}>바위</button>
       <button onClick={()=> play("paper")}>보</button>
+      
     </div>
     </div> 
   );
