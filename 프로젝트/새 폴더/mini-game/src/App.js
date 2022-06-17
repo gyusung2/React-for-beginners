@@ -27,15 +27,16 @@ function App() {
   const [userSelect , setUserSelect] = useState(null)
 
   const play = (userChoice)=>{
-    userSelect = choice[userChoice]
+   setUserSelect(choice[userChoice]) 
 
   }
 
   return (
     <div>
     <div className='main'>
-     <Box title="You"></Box>
-     <Box title="Computer"></Box>
+      {/* const [userSelect , setUserSelect] = useState(null) 값을 넣어줌 */}
+     <Box title="You" item={userSelect}></Box>
+     {/* <Box title="Computer"></Box> */}
     </div>
 
     <div className='main'>
@@ -43,7 +44,7 @@ function App() {
       <button onClick={()=> play("rock")}>바위</button>
       <button onClick={()=> play("paper")}>보</button>
     </div>
-    </div>
+    </div> 
   );
     
 }

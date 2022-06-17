@@ -2,10 +2,11 @@ import React from 'react';
 // rafce 컴포넌트 단축키
 
 const Box = (props) => {
+  console.log('props' , props);
   return(
     <div className='box'>
       <h1>{props.title}</h1>
-      <img className='item-img' src="https://m.media-amazon.com/images/I/61OorFhm6SL._AC_SX466_.jpg"></img>
+      <img className='item-img' src={props.item && props.item.img}></img>
       <h2>Win</h2>
     </div>
     
