@@ -5,9 +5,9 @@ import Box from './component/Box'
 function App() {
   return (
     <div>
-      <Box/>
-      <Box/>
-      
+      <Box name = '손흥민' num ={7}/>
+      <Box name = '케인' num ={10}/>
+      <Box name = '케빈데브라이너' num ={17}/>
 
     </div>
   );
@@ -15,6 +15,5 @@ function App() {
 
 export default App;
 //컴포넌트 만드는 단축키 : rafce
-// 반복이 되는 부분.
-// 기능별로
-// 하나에 한 기능만
+//props : 함수의 매개변수와 같은 존재
+// props로 부모 -> 자식 state 전송하는 법 
