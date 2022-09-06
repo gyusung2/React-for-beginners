@@ -27,6 +27,11 @@
 .App-link {
   color: #61dafb;
 }
+.Box{
+  width: 100px ;
+  height: 100px;
+  border: 1px solid black;
+}
 
 @keyframes App-logo-spin {
   from {

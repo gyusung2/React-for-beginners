@@ -1,25 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import Box from './component/Box'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Box/>
+      <Box/>
+      
+
     </div>
   );
 }
 
 export default App;
+//컴포넌트 만드는 단축키 : rafce
+// 반복이 되는 부분.
+// 기능별로
+// 하나에 한 기능만
