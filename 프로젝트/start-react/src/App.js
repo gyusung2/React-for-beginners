@@ -7,6 +7,7 @@ function App() {
   let [글제목, 글제목변경] = useState(['남자 코트 추천', '맛집추천', '파이선독학'])
   let [따봉, 따봉변경] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
+  let [title, setTitle] = useState(0);
 
 
 
@@ -60,7 +61,7 @@ function App() {
 
         <button onClick={() => { setModal(!modal) }}>모달</button>
         {
-          modal == true ? <Modal /> : null
+          modal == true ? <Modal 글제목변경={글제목변경}  글제목={글제목}/> : null
         }
 
         {/* <Modal></Modal> */}
@@ -72,12 +73,17 @@ function App() {
     </div >
   );
 }
-function Modal() { //컴포넌트
+function Modal(props) { //컴포넌트
   return (
     <div className='modal'>
-      <h4>제목</h4>
+      <h4>{props.글제목[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button onClick={()=>{{
+        let copyModal  = [...props.글제목];
+        copyModal[0] = '아동코트추천';
+        props.글제목변경(copyModal) }}}
+      >글수정</button>
     </div>
   )
 }
