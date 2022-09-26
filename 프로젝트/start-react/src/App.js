@@ -48,7 +48,7 @@ function App() {
 
             글제목.map(function (a, i) {
               return <div className='list'>
-                <h4>
+                <h4 onClick={()=>{setModal(true); setTitle(i)}}>
                   {글제목[i]} <span onClick={()=> { 
                     let copy = [...따봉];
                   copy[i] = copy[i] + 1;
