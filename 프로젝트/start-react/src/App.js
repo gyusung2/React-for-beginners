@@ -61,7 +61,7 @@ function App() {
 
         <button onClick={() => { setModal(!modal) }}>모달</button>
         {
-          modal == true ? <Modal 글제목변경={글제목변경}  글제목={글제목}/> : null
+          modal == true ? <Modal title={title} 글제목변경={글제목변경} 글제목={글제목}/> : null
         }
 
         {/* <Modal></Modal> */}
@@ -76,14 +76,12 @@ function App() {
 function Modal(props) { //컴포넌트
   return (
     <div className='modal'>
-      <h4>{props.글제목[0]}</h4>
+      <h4>{props.글제목[props.title]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
-      <button onClick={()=>{{
-        let copyModal  = [...props.글제목];
-        copyModal[0] = '아동코트추천';
-        props.글제목변경(copyModal) }}}
-      >글수정</button>
+      <button onClick={()=>{let copy2 = [...props.글제목];
+       copy2[0]='여자코트추천';
+       props.글제목변경(copy2)}}>글수정</button>
     </div>
   )
 }
