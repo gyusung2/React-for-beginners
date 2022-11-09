@@ -48,28 +48,30 @@ function App() {
 
             글제목.map(function (a, i) {
               return <div className='list'>
-                <h4 onClick={()=>{setModal(true); setTitle(i)}}>
-                  {글제목[i]} <span onClick={()=> { 
+                <h4 onClick={() => { setModal(true); setTitle(i) }}>
+                  {글제목[i]} <span onClick={() => {
                     let copy = [...따봉];
-                  copy[i] = copy[i] + 1;
-                  따봉변경(copy)}}>👍</span> {따봉[i]}
+                    copy[i] = copy[i] + 1;
+                    따봉변경(copy)
+                  }}>👍</span> {따봉[i]}
                 </h4>
                 <p>2월 17일 발행</p>
               </div>
             })
           }
 
-        <button onClick={() => { setModal(!modal) }}>모달</button>
-        {
-          modal == true ? <Modal title={title} 글제목변경={글제목변경} 글제목={글제목}/> : null
-        }
+          <button onClick={() => { setModal(!modal) }}>모달</button>
+          {
+            modal == true ? <Modal title={title} 글제목변경={글제목변경} 글제목={글제목} /> : null
+          }
+      
 
-        {/* <Modal></Modal> */}
+          {/* <Modal></Modal> */}
 
 
 
+        </div>
       </div>
-    </div>
     </div >
   );
 }
@@ -79,9 +81,11 @@ function Modal(props) { //컴포넌트
       <h4>{props.글제목[props.title]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
-      <button onClick={()=>{let copy2 = [...props.글제목];
-       copy2[0]='여자코트추천';
-       props.글제목변경(copy2)}}>글수정</button>
+      <button onClick={() => {
+        let copy2 = [...props.글제목];
+        copy2[0] = '여자코트추천';
+        props.글제목변경(copy2)
+      }}>글수정</button>
     </div>
   )
 }
