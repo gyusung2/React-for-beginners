@@ -17,7 +17,7 @@ function App() {
         글제목변경(copy)
       }}>버튼</button>
 
-      <button onClick={()=>{
+      <button onClick={() => {
         let copy2 = [...글제목];
         copy2.sort();
         글제목변경(copy2)
