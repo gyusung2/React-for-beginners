@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 function App() {
 
-  let [글제목,b] = useState(['남자 코트 추천','강남','부산']);
+  let [글제목, b] = useState(['남자 코트 추천', '강남', '부산']);
   return (
     <div className="App">
       <div style={{ color: 'blue' }} className='black-nav'>
