@@ -5,6 +5,7 @@ import { useState } from 'react';
 function App() {
   let [글제목, 글제목변경] = useState(['남자 코트 추천', '강남', '부산']);
   let [따봉, 따봉변경] = useState([0])
+  let [modal, setModal] = useState(false);
   return (
     <div className="App">
       <div style={{ color: 'royalblue' }} className='black-nav'>
@@ -31,18 +32,19 @@ function App() {
         <p> 11월 12일</p>
       </div>
       <div className='list'>
-        <h4>{글제목[1]}<span onClick={() => {
-          따봉변경(따봉 + 1)
-        }}>👍</span>{따봉}</h4>
+        <h4 >{글제목[1]}<span>👍</span>{따봉}</h4>
         <p> 11월 12일</p>
       </div>
       <div className='list'>
-        <h4>{글제목[2]}<span onClick={() => {
-          따봉변경(따봉 + 1)
-        }}>👍</span>{따봉}</h4>
+        <h4 onClick={() => {
+          setModal(!modal)
+        }} >{글제목[2]}<span>👍</span>{따봉}</h4>
+        <p> 11월 12일</p>
       </div>
-      <Modal />
-      <Test />
+      {
+        modal == true ? <Modal></Modal> : null
+      }
+
     </div>
   );
 }
