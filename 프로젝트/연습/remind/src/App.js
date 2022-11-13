@@ -3,7 +3,6 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-  ''
   let [글제목, 글제목변경] = useState(['남자 코트 추천', '강남', '부산']);
   let [따봉, 따봉변경] = useState([0])
   return (
@@ -42,8 +41,24 @@ function App() {
           따봉변경(따봉 + 1)
         }}>👍</span>{따봉}</h4>
       </div>
+      <Modal />
+      <Test />
     </div>
   );
 }
+
+
+
+function Modal() {
+  return (
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  )
+}
+
+
 
 export default App;
