@@ -29,11 +29,14 @@ function App() {
           글제목.map(function (a, i) {
             return (
               <div className="list" key={i}>
-                <h4>{글제목[i]}
+                <h4 onClick={() => setModal(true)}>{글제목[i]}
                   <span onClick={() => {
                     let copy3 = [...따봉];
                     copy3[i] = copy3[i] + 1;
                     따봉변경(copy3)
+                    // let copy3 = [...따봉];
+                    // copy3[i] = copy3[i] + 1;
+                    // 따봉변경(copy3)
                   }}>👍{따봉[i]} </span></h4>
                 <p>2월 18일 발행</p>
               </div>
@@ -41,7 +44,7 @@ function App() {
           })
         }
         {
-          modal == true ? <Modal></Modal> : null
+          modal == true ? <Modal color={'yellow'} 글제목변경={글제목변경} 글제목={글제목} /> : null
         }
 
       </>
@@ -52,12 +55,17 @@ function App() {
 
 
 
-function Modal() {
+function Modal(props) {
   return (
-    <div className="modal">
-      <h4>제목</h4>
+    <div className="modal" style={{ background: props.color }}>
+      <h4>{props.글제목[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button onClick={() => {
+        let copy4 = [...props.글제목];
+        copy4[0] = '패딩추추천'
+        props.글제목변경(copy4)
+      }}>변경</button>
     </div>
   )
 }
