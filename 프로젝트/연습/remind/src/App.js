@@ -7,6 +7,7 @@ function App() {
   let [따봉, 따봉변경] = useState([0, 0, 0])
   let [modal, setModal] = useState(false);
   let [title, setTitle] = useState(0);
+  let [입력값,입력값변경] = useState('');
   return (
     <div className="App">
       <>
@@ -44,6 +45,11 @@ function App() {
             )
           })
         }
+        <input onChange={(e)=>{입력값변경(e.target.value);}}/><button onClick={()=>{
+          let copy5 = [...글제목];
+          copy5.unshift(입력값)
+          글제목변경(copy5)
+        }}>버튼</button>
         {
           modal == true ? <Modal color={'yellow'}  title={title}글제목={글제목} /> : null
         }
