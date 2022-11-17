@@ -41,6 +41,12 @@ function App() {
                     // 따봉변경(copy3)
                   }}>👍{따봉[i]} </span></h4>
                 <p>2월 18일 발행</p>
+                <button onClick={()=>{
+                  let copy6 = [...글제목];
+                  copy6.splice(0,1);
+                  글제목변경(copy6)
+
+                }}>삭제</button>
               </div>
             )
           })
@@ -49,7 +55,7 @@ function App() {
           let copy5 = [...글제목];
           copy5.unshift(입력값)
           글제목변경(copy5)
-        }}>버튼</button>
+        }}>생성</button>
         {
           modal == true ? <Modal color={'yellow'}  title={title}글제목={글제목} /> : null
         }
