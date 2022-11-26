@@ -1,7 +1,17 @@
 .App {
   text-align: center;
 }
-
+.box {
+  border: 1px solid black;
+  width: 500px;
+}
+.item-img {
+  width: 400px;
+}
+.main {
+  display: flex;
+  justify-content: center;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
