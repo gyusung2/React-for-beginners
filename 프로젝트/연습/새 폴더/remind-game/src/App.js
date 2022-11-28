@@ -29,16 +29,46 @@ function App() {
   const [computerSelect, setComputerSelect] = useState(null);
   const [result, setResult] = useState("");
 
-  const play = (userChoice) => {// 버튼 실행 함수
+  const play = (userChoice) => {
+    // 버튼 실행 함수
     setUserselect(choice[userChoice]); //choice값에서 userChoice 값을 들고 오는 것
     let computerChoice = randomChoice(); //랜덤숫자 돌아가는 (실행) 함수
     setComputerSelect(computerChoice);
+    setResult(judgement(choice[userChoice], computerChoice)); //유저값,컴퓨터값
   };
-  const randomChoice = () => {// 랜덤숫자 돌아가는 (실행) 함수
+
+  const judgement = (user, computer) => {
+    // user == computer tie
+    // user == rock, computer == 'scissors' user 이긴거
+    // user == rock, computer == 'paper' user 진거지
+    // user ==  'scissors'   computer ==  paper user 이긴거
+    // user ==  'scissors' computer ==  rock 진거지
+    // user ==  'paper' computer == 'scissors' 진거
+    // ====================================================/
+    // if (user.name == computer.name){
+    //   return  'tie'
+    // }else if(user.name=="Rock"){
+    //   if(computer == 'Scissors'){
+    //     return 'win'
+    //   }else {
+    //     return 'lose'
+    //   }
+    // }
+// 삼항 연산자
+    if (user.name == computer.name) {
+      return "tie";
+    } else if (user.name == "Rock")
+      return computer.name == "Scissors" ? "win" : "lose";
+    else if (user.name == "Scissors")
+      return computer.name == "Papper" ? "win" : "lose";
+    else if (user.name == "Papper") return computer == "Rock" ? "win" : "lose";
+  };
+  const randomChoice = () => {
+    // 랜덤숫자 돌아가는 (실행) 함수
     let itemArray = Object.keys(choice); // 배열값으로 실행 하게 되는 함수[객체 키값 뽑아 어레이 만들어 주는 함수]
     // console.log(itemArray);
     let randomItem = Math.floor(Math.random() * itemArray.length);
-    let final = itemArray[randomItem];// itemArray에 어레이에 randomItem값을 넣어준다
+    let final = itemArray[randomItem]; // itemArray에 어레이에 randomItem값을 넣어준다
     return choice[final]; //리턴
   };
 
@@ -47,7 +77,7 @@ function App() {
       <div className="main">
         <Box title="YOU" item={userSelect} result={result} />
         <Box title="Computer" item={computerSelect} result={result} />
-        <h2>{props.result}</h2>
+    
       </div>
       <div className="main">
         <button onClick={() => play("scissors")}>가위</button>
