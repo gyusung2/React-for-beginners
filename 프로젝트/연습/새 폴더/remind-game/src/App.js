@@ -3,12 +3,12 @@ import "./App.css";
 import { useState } from "react";
 import Box from "./component/Box";
 
-// 유저는 박스 두개를 볼 수 있다.(타이틀, 사진, 결과).
-// 유저는 박스 하단에 가위바위보 버튼을 볼 수 있다.
-// 버튼을 클릭하면 클릭한 아이템이 유저 박스에 보인다.
-// 버튼을 클릭하면 컴퓨터 아이템은 랜덤하게 선택이 된다.
-// 3번 4번의 아이템을 가지고 누가 이겼는지 승패를 나눈다.
-// 박스 테두리가 결과에 따라 색이 변한다. 지면 빨간색, 이기면 초록색, 비기면 검정색이 보인다.
+// 1 유저는 박스 두개를 볼 수 있다.(타이틀, 사진, 결과).
+// 2 유저는 박스 하단에 가위바위보 버튼을 볼 수 있다.
+// 3 버튼을 클릭하면 클릭한 아이템이 유저 박스에 보인다.
+// 4 버튼을 클릭하면 컴퓨터 아이템은 랜덤하게 선택이 된다.
+// 5 3번 4번의 아이템을 가지고 누가 이겼는지 승패를 나눈다.
+// 6 박스 테두리가 결과에 따라 색이 변한다. 지면 빨간색, 이기면 초록색, 비기면 검정색이 보인다.
 
 const choice = {
   rock: {
@@ -27,26 +27,27 @@ const choice = {
 function App() {
   const [userSelect, setUserselect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
-  const [result , setResult] = useState('')
+  const [result, setResult] = useState("");
 
   const play = (userChoice) => {// 버튼 실행 함수
-    setUserselect(choice[userChoice]);
-    let computerChoice = randomChoice();
-    setComputerSelect(computerChoice)
+    setUserselect(choice[userChoice]); //choice값에서 userChoice 값을 들고 오는 것
+    let computerChoice = randomChoice(); //랜덤숫자 돌아가는 (실행) 함수
+    setComputerSelect(computerChoice);
   };
   const randomChoice = () => {// 랜덤숫자 돌아가는 (실행) 함수
-    let itemArray = Object.keys(choice); // 배열값으로 실행 하게 되는 함수
+    let itemArray = Object.keys(choice); // 배열값으로 실행 하게 되는 함수[객체 키값 뽑아 어레이 만들어 주는 함수]
     // console.log(itemArray);
     let randomItem = Math.floor(Math.random() * itemArray.length);
-    let final = itemArray[randomItem]
-    return choice[final]
+    let final = itemArray[randomItem];// itemArray에 어레이에 randomItem값을 넣어준다
+    return choice[final]; //리턴
   };
 
   return (
     <>
       <div className="main">
-        <Box title="YOU" item={userSelect} />
-        <Box title="Computer" item={computerSelect} />
+        <Box title="YOU" item={userSelect} result={result} />
+        <Box title="Computer" item={computerSelect} result={result} />
+        <h2>{props.result}</h2>
       </div>
       <div className="main">
         <button onClick={() => play("scissors")}>가위</button>
