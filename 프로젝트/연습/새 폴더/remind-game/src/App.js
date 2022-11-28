@@ -9,6 +9,7 @@ import Box from "./component/Box";
 // 버튼을 클릭하면 컴퓨터 아이템은 랜덤하게 선택이 된다.
 // 3번 4번의 아이템을 가지고 누가 이겼는지 승패를 나눈다.
 // 박스 테두리가 결과에 따라 색이 변한다. 지면 빨간색, 이기면 초록색, 비기면 검정색이 보인다.
+
 const choice = {
   rock: {
     name: "Rock",
@@ -26,16 +27,19 @@ const choice = {
 function App() {
   const [userSelect, setUserselect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
+  const [result , setResult] = useState('')
 
   const play = (userChoice) => {// 버튼 실행 함수
     setUserselect(choice[userChoice]);
     let computerChoice = randomChoice();
+    setComputerSelect(computerChoice)
   };
-  const randomChoice = () => { // 랜덤숫자 돌아가는 (실행) 함수
+  const randomChoice = () => {// 랜덤숫자 돌아가는 (실행) 함수
     let itemArray = Object.keys(choice); // 배열값으로 실행 하게 되는 함수
-    console.log(itemArray);
-    let randomItem = Math.random()
-    // console.log('random value',randomItem);
+    // console.log(itemArray);
+    let randomItem = Math.floor(Math.random() * itemArray.length);
+    let final = itemArray[randomItem]
+    return choice[final]
   };
 
   return (
