@@ -61,7 +61,7 @@ function App() {
       return computer.name == "Scissors" ? "win" : "lose";
     else if (user.name == "Scissors")
       return computer.name == "Papper" ? "win" : "lose";
-    else if (user.name == "Papper") return computer == "Rock" ? "win" : "lose";
+    else if (user.name == "Papper") return computer.name == "Rock" ? "win" : "lose";
   };
   const randomChoice = () => {
     // 랜덤숫자 돌아가는 (실행) 함수
